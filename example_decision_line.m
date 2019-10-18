@@ -30,22 +30,19 @@ decision_points_three = [];
 ih = 1;
 
 for j = 1:length(z)
-   if abs(z(j,1) - z(j,2)) < 0.01 && z(j,1) > z(j,3)
+   if abs(z(j,1) - z(j,2)) < 0.001 && abs(z(j,1) - z(j,3)) > 0.01
     decision_points_one(io,:) = points(j,:);
     io = io + 1; 
-   end
-  if abs(z(j,1) - z(j,3)) < 0.01 && z(j,1) > z(j,2)
+   elseif abs(z(j,1) - z(j,3)) < 0.001 && z(j,1) > z(j,2)
     decision_points_two(it,:) = points(j,:);
     it = it + 1; 
-  end
-  if abs(z(j,2) - z(j,3)) < 0.01 && z(j,2) > z(j,1)
+   elseif abs(z(j,2) - z(j,3)) < 0.001 && z(j,2) > z(j,1)
     decision_points_three(ih,:) = points(j,:);
     ih = ih + 1; 
-  end
-  if abs(z(j,2) - z(j,3)) < 0.001 && abs(z(j,1) - z(j,3)) < 0.001
+   elseif abs(z(j,2) - z(j,3)) < 0.001 && abs(z(j,1) - z(j,3)) < 0.001
     decision_points_three(ih,:) = points(j,:);
     ih = ih + 1; 
-  end
+   end
 end
 
 [~, data] = max(t_train, [], 2);
@@ -60,8 +57,8 @@ scatter(x_two(:,1), x_two(:,2), 'filled', 'g');
 hold on
 scatter(x_three(:,1), x_three(:,2), 'filled', 'r');
 hold on
-scatter(decision_points_one(:,1), decision_points_one(:,2), 4, 'filled', 'g'); 
+scatter(decision_points_one(:,1), decision_points_one(:,2), 2, 'filled', 'black'); 
 hold on
-scatter(decision_points_two(:,1), decision_points_two(:,2), 4, 'filled', 'r'); 
-hold on
-scatter(decision_points_three(:,1), decision_points_three(:,2), 4, 'filled', 'b'); 
+scatter(decision_points_two(:,1), decision_points_two(:,2), 2, 'filled', 'black'); 
+% hold on
+% scatter(decision_points_three(:,1), decision_points_three(:,2), 4, 'filled', 'b'); 
