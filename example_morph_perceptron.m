@@ -1,8 +1,10 @@
 % Example of how to run the MP on the pathbased dataset
+addpath('DATASETS/Ripley');
 %% Reading the data and deciding parameters
-[x_train,t_train, ~, ~] = pathbased_data();
-    n_tries = 1;
-n_neurons = 10;
+[x_train,t_train, x_test, t_test] = data_sintripley();
+
+n_tries = 10;
+n_neurons = 50;
 C = 1e-1;
 metric = 1; % 1 for accuracy, 0 for mean squared root
 

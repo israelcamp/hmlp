@@ -15,9 +15,11 @@ Teste = transpose(Teste);
 
 fclose('all');
 
+rng(0);
 data = cat(1, Treino, Teste);
 rand_seq = randperm(size(data,1));
 data = data(rand_seq,:);
+
 
 data_X = mapminmax(data(:,1:class_size)',-1,1)';
 x_treino = data_X(1:treino_size,:);

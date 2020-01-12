@@ -33,7 +33,7 @@ for j = 1:length(z)
    if abs(z(j,1) - z(j,2)) < 0.001 && abs(z(j,1) - z(j,3)) > 0.01
     decision_points_one(io,:) = points(j,:);
     io = io + 1; 
-   elseif abs(z(j,1) - z(j,3)) < 0.001 && z(j,1) > z(j,2)
+   elseif abs(z(j,1) - z(j,3)) < 0.001 && abs(z(j,1) - z(j,2)) > 0.01
     decision_points_two(it,:) = points(j,:);
     it = it + 1; 
    elseif abs(z(j,2) - z(j,3)) < 0.001 && z(j,2) > z(j,1)
@@ -51,14 +51,25 @@ x_ones = x_train(data(:) == 1, :);
 x_two = x_train(data(:) == 2, :);
 x_three = x_train(data(:) == 3, :);
 
-scatter(x_ones(:,1), x_ones(:,2), 'filled', 'b');
+%% Plot
+dec = sortrows(decision_points_one, 2);
+dect = sortrows(decision_points_two, 2);
+
+patch('XData', [0, 1, 1, 0], 'YData', [0, 0, 1, 1], 'EdgeColor', 'none', 'FaceColor', [1., 1., 1.], 'FaceAlpha', 1.);
 hold on
-scatter(x_two(:,1), x_two(:,2), 'filled', 'g');
+scatter(x_ones(:,1), x_ones(:,2), 'b', '+');
 hold on
-scatter(x_three(:,1), x_three(:,2), 'filled', 'r');
+scatter(x_two(:,1), x_two(:,2), 'g', 's');
 hold on
-scatter(decision_points_one(:,1), decision_points_one(:,2), 2, 'filled', 'black'); 
+scatter(x_three(:,1), x_three(:,2), 'r', 'o');
 hold on
-scatter(decision_points_two(:,1), decision_points_two(:,2), 2, 'filled', 'black'); 
+% scatter(decision_points_one(:,1), decision_points_one(:,2), 2, 'filled', 'black'); 
+% hold on
+patch('XData', [dect(1,1); dec(:,1); dect(end,1)], 'YData', [dect(1,2); dec(:,2); dect(end,2)], 'EdgeColor', 'none', 'FaceColor', [0.5, 0.5, 0.5], 'FaceAlpha', 0.4);
+hold on
+patch('XData', dect(:,1), 'YData', dect(:,2), 'EdgeColor', 'none', 'FaceColor', [0.2, 0.2, 0.2], 'FaceAlpha', 0.4);
+% hold on
+% scatter(decision_points_two(:,1), decision_points_two(:,2), 2, 'filled', 'black'); 
 % hold on
 % scatter(decision_points_three(:,1), decision_points_three(:,2), 4, 'filled', 'b'); 
+axis('off');
