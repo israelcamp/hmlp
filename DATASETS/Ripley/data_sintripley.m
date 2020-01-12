@@ -15,13 +15,10 @@ Teste = transpose(Teste);
 
 fclose('all');
 
-rng(0);
+
 data = cat(1, Treino, Teste);
-rand_seq = randperm(size(data,1));
-data = data(rand_seq,:);
-
-
 data_X = mapminmax(data(:,1:class_size)',-1,1)';
+
 x_treino = data_X(1:treino_size,:);
 x_teste = data_X(treino_size+1:end,:);
 
@@ -33,3 +30,10 @@ end
 for i = treino_size+1:treino_size+teste_size
    t_teste(i-treino_size,data(i,att_size+1)+1) = 1; 
 end
+
+rng(0);
+rand_seq = randperm(size(x_treino,1));
+x_treino = x_treino(rand_seq,:);
+t_treino = t_treino(rand_seq,:);
+
+

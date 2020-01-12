@@ -9,6 +9,8 @@ t_train = zeros(tr_size,1);
 x_test  = zeros(te_size,1);
 t_test  = zeros(te_size,1);
 
+rng(0);
+
 k = 1;
 for i = 1:tr_size*4
    x = 10*rand()-5;

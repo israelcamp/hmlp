@@ -48,3 +48,8 @@ x_teste(1:teste_m1,:) = datax(linha_m(1:teste_m1),:);
 t_teste(1:teste_m1,Data_cancer(linha_m(1:teste_m1),1)) = 1;
 x_teste(teste_m1+1:end,:) = datax(linha_b(1:teste_b2), :);
 t_teste(teste_m1+1:end, Data_cancer(linha_b(1:teste_b2),1)) = 1;
+
+rng(0);
+rand_seq = randperm(size(x_treino,1));
+x_treino = x_treino(rand_seq,:);
+t_treino = t_treino(rand_seq,:);
