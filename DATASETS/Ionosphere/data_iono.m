@@ -2,9 +2,9 @@ function [x_train, t_train, x_test, t_test] = data_iono()
 
 data = load('ionosphere.data');
 
-rng(1);
-ridx = randperm(size(data,1));
-data = data(ridx,:);
+% rng(1);
+% ridx = randperm(size(data,1));
+% data = data(ridx,:);
 
 x = data(:,1:end-1);
 t = data(:,end);

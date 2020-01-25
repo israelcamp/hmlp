@@ -1,6 +1,6 @@
 function [x_train, t_train, x_test, t_test] = data_hepatitis() 
 data = load('hepatitis_2.data');
-rng(1);
+rng(0);
 ridx = randperm(size(data,1));
 data = data(ridx,:);
 

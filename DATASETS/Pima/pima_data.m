@@ -6,9 +6,9 @@ function [x_train, t_train, x_test, t_test] = pima_data()
 % data = cat(1, train, test);
 
 data = load('pima.data');
-rng(1);
-ridx = randperm(size(data,1));
-data = data(ridx,:);
+% rng(0);
+% ridx = randperm(size(data,1));
+% data = data(ridx,:);
 
 train_size = ceil(.8 * size(data, 1));
 test_size  = size(data, 1) - train_size;

@@ -1,4 +1,5 @@
-[X, T, ~, ~,] = pathbased_data();
+addpath('DATASETS/Pages');
+[X, T, ~, ~,] = page_data();
 n_att = size(X,2);
 k = 10;
 n = floor(size(X, 1) / k);
@@ -6,11 +7,14 @@ n = floor(size(X, 1) / k);
 x_teste = zeros(n, size(X,2));
 t_teste = zeros(n, size(T,2));
 
+hund = 100:100:500;
+thous = 1000:1000:5000;
+
 avg_best = 0;
-for p = linspace(-3, -1, 3)
+for p = linspace(-3, 0, 4)
     display(p)
-    for L_morph = 100:100:500
-        for L_lin = 100:100:500
+    for L_morph = [hund, ]
+        for L_lin = [hund, ]
             for rg = 1:10
                 [W{1}, W{2}] = morph_random(n_att, L_morph);
                 [W{3}, W{4}] = lin_random(n_att, L_lin, -1, 1);
@@ -45,3 +49,17 @@ for p = linspace(-3, -1, 3)
         end
     end
 end
+
+%% Training with the result from CV
+[x_train, t_train, x_test, t_test] = page_data();
+
+% Beta
+H_train = h_linear_and_morphological(x_train, W_best{1}, W_best{2}, W_best{3}, W_best{4});
+Beta = beta(x_train, t_train, H_train, C_best);
+
+% Train
+avg_train = calculate_metric(H_train, Beta, t_train, 1);
+
+% Test
+H_test = h_linear_and_morphological(x_test, W_best{1}, W_best{2}, W_best{3}, W_best{4});
+avg = calculate_metric(H_test, Beta, t_test, 1);
