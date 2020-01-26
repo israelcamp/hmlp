@@ -1,13 +1,13 @@
 %% Getting the data
-addpath('DATASETS/MNIST/');
-[x_train, t_train, x_test, t_test] = mnist();
+addpath('DATASETS/Pages/');
+[x_train, t_train, x_test, t_test] = page_data();
 
 [~, y_train] = max(t_train, [], 2);
 [~, y_test] = max(t_test, [], 2);
 
 %% Setting variables
 output_size = size(t_train, 2);
-hidden_neurons = 60;
+hidden_neurons = 50;
 netp = [hidden_neurons, output_size, 300];
 
 %% Training the network
@@ -44,7 +44,7 @@ end
 toc
 close(wb);
 
-AvgTr=mean(train);
-StdTr=std(train);
-AvgTe=mean(test);
-StdTe=std(test);
+AvgTr=mean(train)
+StdTr=std(train)
+AvgTe=mean(test)
+StdTe=std(test)

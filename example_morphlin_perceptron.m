@@ -1,13 +1,13 @@
 % Example of how to run the MorphologicalLinearPerceptron on the pathbased dataset
 %% Reading the data and deciding parameters
-addpath('DATASETS/Wine/');
-[x_train, t_train, x_test, t_test] = data_winequal();
+addpath('DATASETS/Pages/');
+[x_train, t_train, x_test, t_test] = page_data();
 
-n_tries = 5;
+n_tries = 1;
 
-n_neurons_morph = 4000;
-n_neurons_lin = 100; 
-C = 1e-2;
+n_neurons_morph = 200;
+n_neurons_lin = 200; 
+C = 1e-5;
 metric = 1; % 1 for accuracy, 0 for mean squared root
 
 

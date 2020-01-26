@@ -22,8 +22,8 @@ datax = mapminmax(Data_cancer(:,2:end)')';
 
 x_treino = zeros(treino_size,att_size);
 x_teste = zeros(teste_size,att_size);
-t_treino = -ones(treino_size, class_size);
-t_teste = -ones(teste_size, class_size);
+t_treino = zeros(treino_size, class_size);
+t_teste = zeros(teste_size, class_size);
 
 counter_m = 0;
 counter_b = 0;
