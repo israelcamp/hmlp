@@ -1,5 +1,5 @@
-addpath('DATASETS/Pages');
-[X, T, ~, ~,] = page_data();
+addpath('DATASETS/Cancer');
+[X, T, ~, ~,] = data_cancer();
 n_att = size(X,2);
 k = 10;
 n = floor(size(X, 1) / k);
@@ -51,7 +51,7 @@ for p = linspace(-3, 0, 4)
 end
 
 %% Training with the result from CV
-[x_train, t_train, x_test, t_test] = page_data();
+[x_train, t_train, x_test, t_test] = data_cancer();
 
 % Beta
 H_train = h_linear_and_morphological(x_train, W_best{1}, W_best{2}, W_best{3}, W_best{4});
