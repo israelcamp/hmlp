@@ -1,4 +1,4 @@
-[Head Anchor](# Morphological Perceptron and Hybrid Morphological/Linear Perceptron)
+# Morphological Perceptron and Hybrid Morphological/Linear Perceptron
 
 MATLAB codes for the article on [Morphological and Hybrid Morphological/Linear Perceptrons](https://www.sciencedirect.com/science/article/abs/pii/S0893608019303958) that are trained by extreme learning machine technique.
 
