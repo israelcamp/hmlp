@@ -50,7 +50,6 @@ for i = idx
 end
 
 %% standardize
-data = cat(1, x_train, x_test);
-data = mapminmax(data',0,1)';
-x_train = data(1:tr_size);
-x_test  = data(tr_size+1:end);
+[x_train, stats] = mapminmax(x_train', -1, 1);
+x_train = x_train';
+x_test = mapminmax('apply', x_test', stats)';
